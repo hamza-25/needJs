@@ -23,7 +23,7 @@ program
 program
   .command('struct <structureType>')
   .description('create a structure type (Basic, MVC, Modular, Service-Based,  etc.)')
-  .action(async (structureType) => {
+  .action(async (structureType, options) => {
     // Check if the structureType is valid
     if( !(availabaleStructure.includes(structureType))){
       console.error(`Invalid structure type. Available types are: ${availabaleStructure.join(', ')}`);
@@ -34,5 +34,3 @@ program
   });
   
 program.parse();
-// Access the options
-const options = program.opts();
