@@ -1,5 +1,6 @@
 import { Command } from 'commander';
 import createMvcStructure from '../structures/mvcStructure.mjs';
+import createMvpStructure from '../structures/mvpStructure.mjs';
 import availabaleStructure from '../structures/availabaleStructure.mjs';
 
 const createStructCmd =  new Command('struct')
@@ -17,23 +18,9 @@ const createStructCmd =  new Command('struct')
     console.log(`Creating ${structureType} structure style ${options.style} in ${rootPath}`);
 
     if(structureType === 'mvc'){
-      if( options.style == 'ssr' || options.style == ''){
-        createMvcStructure(rootPath);
-      }else if (options.style == 'rest'){
-        createMvcStructure(rootPath, options.style);
-      }
-      else if (options.style == 'graphql'){
-        createMvcStructure(rootPath, options.style);
-      }
+      createMvcStructure(rootPath, options);
     }else if (structureType === 'mvp'){
-      if( options.style == 'ssr' || options.style == ''){
-        console.log('Creating mvc structure with ssr style');
-      }else if (options.style == 'rest'){
-        console.log('Creating mvc structure with rest style');
-      }
-      else if (options.style == 'graphql'){
-        console.log('Creating mvc structure with graphql style');
-      }
+      createMvpStructure(rootPath, options);
     } 
   
   });

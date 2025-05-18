@@ -3,14 +3,19 @@ import { constants} from 'fs';
 import { createFile } from '../utils/createFile.mjs';
 
 
-const createMvcStructure = async (rootPath, style='ssr') => {
+const createMvcStructure = async (rootPath, options={style: 'ssr'}) => {
     const structureFolders = {
         'ssr': ['/controllers/', '/models/', '/views/', '/routes/', '/services/', '/middlewares/', '/config/', '/utils/', '/tests/', '/public/', '/public/css/', '/public/js/', '/public/images/', '/public/fonts/', '/public/uploads/', '/public/videos/'],
         'graphql': ['/resolvers/', '/models/', '/schemas/', '/services/', '/middlewares/', '/config/', '/utils/', '/tests/'],
         'rest': ['/controllers/', '/models/', '/routes/', '/services/', '/middlewares/', '/config/', '/utils/', '/tests/'],
     };
 
-    for (const folder of structureFolders[style]) {
+    if(!(options.style in structureFolders)){
+        console.error(`Invalid style type. Available types are: ${Object.keys(structureFolders).join(', ')}`);
+        process.exit(1);
+    }
+    
+    for (const folder of structureFolders[options.style]) {
         const folderPath = `${rootPath}${folder}`;
         try {
             await access(folderPath, constants.F_OK);
