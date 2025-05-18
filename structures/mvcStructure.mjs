@@ -5,10 +5,9 @@ import { createFile } from '../utils/createFile.mjs';
 
 const createMvcStructure = async (rootPath, style='ssr') => {
     const structureFolders = {
-        'basic': ['/controllers/', '/models/', '/routes/', '/services/', '/middlewares/', '/config/'],
         'ssr': ['/controllers/', '/models/', '/views/', '/routes/', '/services/', '/middlewares/', '/config/', '/utils/', '/tests/', '/public/', '/public/css/', '/public/js/', '/public/images/', '/public/fonts/', '/public/uploads/', '/public/videos/'],
-        'rest': ['/resolvers/', '/models/', '/schemas/', '/services/', '/services/', '/middlewares/', '/config/', '/utils/'],
-        'graphql': ['/controllers/', '/models/', '/routes/', '/services/', '/middlewares/', '/config/', '/utils/', '/tests/'],
+        'graphql': ['/resolvers/', '/models/', '/schemas/', '/services/', '/middlewares/', '/config/', '/utils/', '/tests/'],
+        'rest': ['/controllers/', '/models/', '/routes/', '/services/', '/middlewares/', '/config/', '/utils/', '/tests/'],
     };
 
     for (const folder of structureFolders[style]) {

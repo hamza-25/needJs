@@ -20,9 +20,9 @@ const createStructCmd =  new Command('struct')
     if (structureType === 'mvc' && (options.style == 'ssr' || options.style == '')) {
       createMvcStructure(rootPath);
     }else if(structureType === 'mvc' && options.style == 'rest'){
-      // createMvcStructure(rootPath, options.style);
+      createMvcStructure(rootPath, options.style);
     }else if (structureType === 'mvc' && options.style == 'graphql'){
-      // createMvcStructure(rootPath, options.style);
+      createMvcStructure(rootPath, options.style);
     }
   
   });
