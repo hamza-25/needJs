@@ -8,6 +8,7 @@ const createStructCmd =  new Command('struct')
   .argument('<structureType>', 'structure type to create')
   .option('--style <style>', 'Style to use (rest, graphql, ssr)', 'ssr')
   .action((structureType, options) => {
+
     const rootPath = process.cwd();
 
     if (!(availabaleStructure.includes(structureType))) {
@@ -15,7 +16,7 @@ const createStructCmd =  new Command('struct')
       process.exit(1);
     }
 
-    console.log(`Creating ${structureType} structure style ${options.style} in ${rootPath}`);
+    console.log(`Creating ${structureType} structure...`);
 
     if(structureType === 'mvc'){
       createMvcStructure(rootPath, options);
