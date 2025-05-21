@@ -1,6 +1,6 @@
 export const envContent = () => {
     return `
-PORT=3000
+PORT=8000
 NODE_ENV=development
 DB_HOST=localhost
 DB_PORT=3306

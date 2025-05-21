@@ -3,6 +3,7 @@ import { constants} from 'fs';
 import { createFile } from '../utils/createFile.mjs';
 import { indexContent } from '../content/indexContent.mjs';
 import { envContent } from '../content/envContent.mjs';
+import { gitIgnoreContent } from '../content/gitIgnoreContent.mjs';
 
 
 const createMvcStructure = async (rootPath, options={style: 'ssr'}) => {
@@ -26,9 +27,9 @@ const createMvcStructure = async (rootPath, options={style: 'ssr'}) => {
             await mkdir(folderPath, { recursive: true });
         }
     }
-    await createFile(`index.js`, indexContent());
     await createFile(`.env`, envContent());
-    await createFile(`.gitignore`, `node_modules\n.env\n.DS_Store\n.vscode\n.idea\n*.log\n*.tmp\n`);
+    await createFile(`index.js`, indexContent());
+    await createFile(`.gitignore`, gitIgnoreContent());
     await createFile(`README.md`, `# Project Title\n\n## Description\n\n## Installation\n\n## Usage\n\n## License\n`);
 
 
