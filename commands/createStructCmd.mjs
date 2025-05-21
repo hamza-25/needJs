@@ -17,6 +17,7 @@ const createStructCmd =  new Command('struct')
     }
 
     console.log(`Creating ${structureType} structure...`);
+    console.log(`Note: make sure you ran this command. 'npm i express dotenv'`);
 
     if(structureType === 'mvc'){
       createMvcStructure(rootPath, options);
