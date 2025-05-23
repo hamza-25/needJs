@@ -2,6 +2,7 @@ import { Command } from 'commander';
 import createMvcStructure from '../structures/mvcStructure.mjs';
 import createMvpStructure from '../structures/mvpStructure.mjs';
 import availabaleStructure from '../structures/availabaleStructure.mjs';
+import consoleStyle from '../utils/consoleStyle.mjs';
 
 const createStructCmd =  new Command('struct')
   .description('create a structure type (Basic, MVC, Modular, etc.)')
@@ -17,7 +18,8 @@ const createStructCmd =  new Command('struct')
     }
 
     console.log(`Creating ${structureType} structure...`);
-    console.log(`Note: make sure you ran this command. 'npm i express dotenv'`);
+    const msg = consoleStyle(`'npm i express dotenv'`,'green', true);
+    console.log(`Note: make sure you ran this command. ${mdg}`);
 
     if(structureType === 'mvc'){
       createMvcStructure(rootPath, options);
