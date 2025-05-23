@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+
 import { Command } from 'commander';
 import commands from './commands/globalCmd.mjs';
 
