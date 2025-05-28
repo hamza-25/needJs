@@ -1,6 +1,6 @@
 export const sequelizeContent = (dialect) => {
     return `
-import { Sequelize } from 'sequelize';
+const { Sequelize } = require('sequelize');
 
 const host = process.env.DB_HOST || 'localhost';
 const user = process.env.DB_USER || 'root';
@@ -10,12 +10,12 @@ const dbName = process.env.DB_NAME || 'mydb';
 
 const sequelize = new Sequelize(dbName, user, password, {
   host: host,
-  dialect: ${dialect} || 'mysql',
+  dialect: '${dialect}' || 'mysql',
   port: port || 3306,
   logging: false,
 });
 
-export default sequelize;
+module.exports = sequelize;
 
 `;
 }
