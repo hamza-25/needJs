@@ -1,6 +1,6 @@
 {
   "name": "needjs-cli",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "needjs library serve to build various structure and implement famous concept",
   "main": "index.mjs",
   "scripts": {
@@ -10,9 +10,7 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "commander": "^13.1.0",
-    "mongoose": "^8.15.1",
-    "needjs-cli": "^1.0.3"
+    "commander": "^13.1.0"
   },
   "bin": {
     "needjs-cli": "./index.mjs"
