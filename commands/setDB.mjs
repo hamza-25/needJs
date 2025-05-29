@@ -49,6 +49,7 @@ const setDB =  new Command('db')
             console.log(`Setting up MongoDB connection...`);
             await createFile(`config/mongoDb.js`, mongoContent());
             console.log(`✅ make sure you have ran the command: ${consoleStyle(`\'npm install mongoose\'`, `green`, true)}`);
+            console.log(`Add:\n\t'const connectMongo = require('./config/mongoDb');'\n\t'connectMongo();'\nin your entry file.`);
         }
 
 
