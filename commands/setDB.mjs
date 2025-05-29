@@ -44,6 +44,11 @@ const setDB =  new Command('db')
             console.log(`Setting up sequelize connection...`);
             await createFile(`config/sequelize.js`, sequelizeContent(dialect));
             console.log(`✅ make sure you have ran the command: ${consoleStyle(`\'npm install sequelize\' and also driver ${drivers[dialect]}`, `green`, true)}`);
+            console.log(`Add:\n\t'sequelize.authenticate().then(() => {
+                        console.log('Connection to the database has been established successfully.');
+                    }).catch(err => {
+                        console.error('Unable to connect to the database:', err);
+                    });'\nin your entry file.`);
 
         } else if (dbType == 'mongodb') {
             console.log(`Setting up MongoDB connection...`);

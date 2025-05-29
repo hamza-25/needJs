@@ -1,6 +1,8 @@
 export const sequelizeContent = (dialect) => {
     return `
 const { Sequelize } = require('sequelize');
+require('dotenv').config();
+
 
 const host = process.env.DB_HOST || 'localhost';
 const user = process.env.DB_USER || 'root';
