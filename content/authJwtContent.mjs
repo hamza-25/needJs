@@ -3,6 +3,7 @@
 export const authJwtRegisterContent = () => {
     return `
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 // BLOCK 1: align with your db setup
 const User = require('../models/User');
 // end BLOCK 1
@@ -18,7 +19,7 @@ const generateToken = (id) => {
 exports.register = async (req, res) => {
   try {
     const { firstName, lastName, email, password } = req.body;
-    
+
     // Check if user already exists
     // BLOCK 2: please align with your db setup.
     const existingUser = await User.findOne({ email });
@@ -30,9 +31,12 @@ exports.register = async (req, res) => {
       });
     }
     
+    // hash password
+    const hashedPassword = await bcrypt.hash(password, 12);
+
     // Create new user
     // BLOCK 3: please align with your db setup.
-    const user = await User.create({ firstName, lastName, email, password });
+    const user = await User.create({ firstName, lastName, email, password: hashedPassword });
     // end BLOCK 3
 
     // Generate JWT token
@@ -40,9 +44,7 @@ exports.register = async (req, res) => {
     
     // Set cookie options
     const cookieOptions = {
-      expires: new Date(
-        Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
-      ),
+      maxAge: process.env.JWT_COOKIE_EXPIRES,
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict'
@@ -89,7 +91,11 @@ exports.login = async (req, res) => {
     // Bloc 1: please align with your db setup.
     const user = await User.findOne({ email }).select('+password');
     // end Bloc 1
-    if (!user || !(await user.comparePassword(password))) {
+    
+    // hash password and compare
+    const passMatch = await bcrypt.compare(password, user.password);
+
+    if (!user || !passMatch) {
       return res.status(401).json({
         status: 'error',
         message: 'Incorrect email or password'
@@ -101,9 +107,7 @@ exports.login = async (req, res) => {
     
     // Set cookie options
     const cookieOptions = {
-      expires: new Date(
-        Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
-      ),
+      maxAge: process.env.JWT_COOKIE_EXPIRES,,
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict'
