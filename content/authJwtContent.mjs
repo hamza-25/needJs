@@ -139,3 +139,31 @@ JWT_EXPIRES_IN=1d
 NODE_ENV=development\n
 `;
 }
+
+export const authJwtRoutesContent = () => {
+    return `
+const express = require('express');
+const router = express.Router();
+const { register, login } = require('../controllers/authController');
+
+// Register route
+router.post('/register',/*please add express validators here,*/ register);
+
+// Login route
+router.post('/login',/*please add express validators here,*/ login);
+
+module.exports = router;    
+`;
+}
+
+export const authJwtEntryPointContent = () => {
+    return `
+\tconst cookieParser = require('cookie-parser');
+\tconst authRoutes = require('./routes/authRoutes');
+\trequire('dotenv').config();
+\t
+\tapp.use(cookieParser());
+\t
+\tapp.use('/auth', authRoutes);
+`;
+}
