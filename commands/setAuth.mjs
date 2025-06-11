@@ -4,7 +4,7 @@ import { dirExistOrCreate } from '../utils/dirExistOrCreate.mjs';
 import path from 'path';
 import { appendTextToFile, createFile } from '../utils/createFile.mjs';
 import { authJwtEnvContent, authJwtRegisterContent, authJwtLoginContent, authJwtRoutesContent, authJwtEntryPointContent } from '../content/authJwtContent.mjs';
-
+import { userModelContent} from '../content/userModelContent.mjs';
 
 const setAuth =  new Command('auth')
   .description('set authentication and authorization configuration')
@@ -35,6 +35,11 @@ const setAuth =  new Command('auth')
         const authRoutesPath = path.join(rootDir, 'routes');
         await dirExistOrCreate(authRoutesPath);
         await appendTextToFile(path.join(authRoutesPath, 'authRoutes.js'), authJwtRoutesContent(), 'utf8');
+
+        // add user model
+        const modelsPath = path.join(rootDir, 'models');
+        await dirExistOrCreate(modelsPath);
+        await appendTextToFile(path.join(modelsPath, 'User.js'), userModelContent(), 'utf8');
 
         // add route to main index.js
         console.log(`please add this content to your main index.js file:\n${authJwtEntryPointContent()}`);
