@@ -9,7 +9,7 @@ const program = new Command();
 program
   .name('needJs')
   .description('A CLI application built with Commander.js')
-  .version('1.0.0')
+  .version('1.1.1')
   .option('-v, --verbose', 'enable verbose output');
 
 commands.forEach((cmd) => program.addCommand(cmd));

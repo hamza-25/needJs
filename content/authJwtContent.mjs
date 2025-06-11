@@ -107,7 +107,7 @@ exports.login = async (req, res) => {
     
     // Set cookie options
     const cookieOptions = {
-      maxAge: process.env.JWT_COOKIE_EXPIRES,,
+      maxAge: process.env.JWT_COOKIE_EXPIRES,
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict'
