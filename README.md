@@ -119,6 +119,12 @@ needjs-cli db mongodb
 ```
 > Setup with MongoDB (without an ORM).
 
+## 🔐 Setup Auth (JWT).
+
+```bash
+needjs-cli auth jwt
+```
+> Setup auth routes and controller.
 ---
 
 ## 👤 Author
