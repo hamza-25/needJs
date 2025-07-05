@@ -1,4 +1,5 @@
-
+export const middleAuthbase64Content = () => {
+    return `
 const User = require('../models/User'); // adjust path to your User model
 const bcrypt = require('bcryptjs');
 
@@ -28,4 +29,5 @@ const isAuth = async (req, res, next) => {
 };
 
 module.exports = isAuth;
-    
+    `;
+}

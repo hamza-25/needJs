@@ -3,7 +3,7 @@ export const middleAuthJwtContent = () => {
 const jwt = require('jsonwebtoken');
 const User = require('../models/User'); // adjust path to your User model
 
-const verifyToken = async (req, res, next) => {
+const isAuth = async (req, res, next) => {
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
 
@@ -16,7 +16,7 @@ const verifyToken = async (req, res, next) => {
     const decoded = jwt.verify(token, secret);
 
     // Check if user exists in DB
-    const user = await User.findById(decoded.id);
+    const user = await User.findById(decoded.id).select('-password -__v');
     if (!user) {
       return res.status(404).json({ message: 'User not found.' });
     }
@@ -28,6 +28,6 @@ const verifyToken = async (req, res, next) => {
   }
 };
 
-module.exports = verifyToken;
+module.exports = isAuth;
     `;
 }
