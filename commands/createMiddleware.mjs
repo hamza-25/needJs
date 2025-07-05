@@ -1,16 +1,20 @@
 import { Command } from 'commander';
-import path from 'path';
+import { authMiddleHandler } from '../middlewares/authMiddleHandler.mjs';
 
 const setMiddleware =  new Command('middleware')
   .description('set middleware configuration')
-  .argument('<middleType>', 'authentication type (e.g., jwt, oauth2)')
-  .action(async (middleType) => {
+  .argument('<middleType>', 'middleware type (auth, role, etc.)')
+  .argument('<authType>', 'authentication type (e.g., jwt, base64, basic)')
+  .action(async (middleType, authType) => {
     try {
-        const absRootPath = process.cwd();
-        const absFolderMiddlPath = path.join(absRootPath, 'middlewares');
+        const allowedAuthTypes = ['jwt', 'base64', 'basic'];
 
-        
-
+        if (middleType === 'auth' && allowedAuthTypes.includes(authType)) {
+         authMiddleHandler(authType);
+        }
+        else if (middleType === 'role') {
+            console.log('maybe role or other middleware');
+        }
     } catch (error) {
       console.error('Error setting middleware:', error);
     }
