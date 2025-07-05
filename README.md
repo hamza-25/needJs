@@ -127,6 +127,15 @@ needjs-cli auth jwt
 > Setup auth routes and controller.
 ---
 
+## Setup Middleware.
+
+```bash
+needjs-cli middleware auth jwt
+needjs-cli middleware auth basic
+```
+> Setup middleware isAuth to check users authentication. 
+---
+
 ## 👤 Author
 
 **Created by Hamza Ichaoui**  
