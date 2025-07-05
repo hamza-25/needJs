@@ -1,6 +1,6 @@
 {
   "name": "needjs-cli",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "needjs library serve to build various structure and implement famous concept",
   "main": "index.mjs",
   "scripts": {

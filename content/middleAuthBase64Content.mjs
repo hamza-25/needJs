@@ -9,15 +9,19 @@ const isAuth = async (req, res, next) => {
     return res.status(401).json({ message: 'Access denied. No token provided.' });
   }
   const emailPassword = Buffer.from(authHeader.split(' ')[1], 'base64').toString('utf8');
-  const [email, password] = userPassword.split(':'); 
+  const [email, password] = emailPassword.split(':'); 
   try {
     // Check if user exists in DB
     const user = await User.findOne({email});
 
+    if(!user) {
+      return res.status(401).json({ message: 'Invalid credentials.' });
+    }
+
     // Check if password matches
     const isMatch = await bcrypt.compare(password, user.password);
 
-    if (!user && !isMatch) {
+    if (!isMatch) {
       return res.status(401).json({ message: 'Invalid credentials.' });
     }
 
