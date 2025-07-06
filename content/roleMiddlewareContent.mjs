@@ -5,7 +5,7 @@ const ${columnName} = (req, res, next) => {
     return res.status(401).json({ message: 'User not authenticated' });
   }
 
-  if (req.user.role != '${expectedValue}') {
+  if (req.user.${columnName} != '${expectedValue}') {
     return res.status(403).json({ message: 'Access denied' });
   }
 
