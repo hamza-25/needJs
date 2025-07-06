@@ -132,8 +132,10 @@ needjs-cli auth jwt
 ```bash
 needjs-cli middleware auth jwt
 needjs-cli middleware auth basic
+needjs-cli middleware role dbColumn:expectedValue
 ```
-> Setup middleware isAuth to check users authentication. 
+> Setup middleware isAuth to check users authentication.
+> Setup middleware roles authorization.
 ---
 
 ## 👤 Author
