@@ -11,10 +11,10 @@ const setMiddleware =  new Command('middleware')
         const allowedAuthTypes = ['jwt', 'basic'];
 
         if (middleType === 'auth' && allowedAuthTypes.includes(options)) {
-         authMiddleHandler(options);
+         await authMiddleHandler(options);
         }
         else if (middleType === 'role' && options.includes(':')) {
-          roleMiddlewareHandler(options);
+          await roleMiddlewareHandler(options);
         } else {
           console.log(`Unsupported middleware args`);
           process.exit(1);

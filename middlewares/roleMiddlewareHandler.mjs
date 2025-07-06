@@ -11,9 +11,9 @@ export const roleMiddlewareHandler = async (roleValue) => {
 
         const [columnName, expectedValue] = roleValue.split(':');
 
-        dirExistOrCreate(absMiddlePath);
+        await dirExistOrCreate(absMiddlePath);
 
-        createFile(`middlewares/${columnName}.js`, roleMiddlewareContent(columnName, expectedValue));
+        await createFile(`middlewares/${columnName}.js`, roleMiddlewareContent(columnName, expectedValue));
     } catch (error) {
         console.error('Error in roleMiddlewareHandler:', error);
         process.exit(1);
