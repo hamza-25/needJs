@@ -7,9 +7,9 @@ import commands from './commands/globalCmd.mjs';
 const program = new Command();
 
 program
-  .name('needJs')
+  .name('needjs-cli')
   .description('A CLI application built with Commander.js')
-  .version('1.1.1')
+  .version('1.1.7')
   .option('-v, --verbose', 'enable verbose output');
 
 commands.forEach((cmd) => program.addCommand(cmd));

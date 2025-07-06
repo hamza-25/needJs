@@ -3,7 +3,7 @@ import { dirExistOrCreate } from '../utils/dirExistOrCreate.mjs';
 import { createFile } from '../utils/createFile.mjs';
 import { middleAuthJwtContent } from '../content/middleAuthJwtContent.mjs';
 import { middleAuthbase64Content } from '../content/middleAuthBase64Content.mjs';
-import consoleStyle from '../utils/consoleStyle.mjs';
+import consoleStyle from '../utils/consoleStyle.mjs'; 
 
 export const authMiddleHandler = (authType) => {
 
