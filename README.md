@@ -142,4 +142,4 @@ needjs-cli middleware role dbColumn:expectedValue
 
 **Created by Hamza Ichaoui**  
 📧 Email: [me677499@gmail.com](mailto:me677499@gmail.com)  
-🔗 LinkedIn: [https://www.linkedin.com/in/hamza-ichaoui/](https://www.linkedin.com/in/hamza-ichaoui/)
+🔗 LinkedIn: [https://www.linkedin.com/in/hamza-ichaoui/](https://www.linkedin.com/in/hamza-ichaoui/) 
