@@ -1,16 +1,11 @@
 export const mongoContent = () => {
     return `
 const mongoose = require('mongoose');
-
-const host = process.env.DB_HOST || 'localhost';
-const user = process.env.DB_USER || 'root';
-const password = process.env.DB_PASSWORD || '';
-const port = process.env.DB_PORT || '27017';
-const dbName = process.env.DB_NAME || 'mydb';
+require('dotenv').config();
 
 const connectMongo = async () => {
   try {
-    await mongoose.connect(\`mongodb://\${host}:\${port}/\${dbName}\`, {
+    await mongoose.connect(\`mongodb://localhost:27017/mydb\`, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       // user: user,        // optional if using auth
@@ -39,7 +34,7 @@ module.exports = connectMongo;
 
 // const connectMongo = async () => {
 //   try {
-//     await mongoose.connect(\`mongodb://${host}:${port}/${dbName}\`, {
+//     await mongoose.connect(\`mongodb://localhost:27017/mydb\`, {
 //       useNewUrlParser: true,
 //       useUnifiedTopology: true,
 //       // user: user,        // optional if using auth

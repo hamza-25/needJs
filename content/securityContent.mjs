@@ -16,14 +16,14 @@ const cors = require('cors');
 app.use(helmet());
     
 // Body parsers
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
     
 // Cookie parser
 app.use(cookieParser());
     
 // XSS Protection
-app.use(xss());
+// app.use(xss());
     
 // HTTP Parameter Pollution protection
 app.use(hpp());

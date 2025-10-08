@@ -23,9 +23,9 @@ app.use(express.urlencoded({ extended: true }));
 // == End Parsers ==
 
 // == Routes ==
-    app.get('/', (req, res) => {
-       res.send('Hello World');
-    });
+app.get('/', (req, res) => {
+   res.send('Hello World');
+});
 // End == Routes ==
 
 app.listen(PORT, () => {
