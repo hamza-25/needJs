@@ -136,7 +136,7 @@ needjs-cli middleware role dbColumn:expectedValue
 ```
 > Setup middleware isAuth to check users authentication.
 > Setup middleware roles authorization.
----
+----
 
 ## 👤 Author
 
